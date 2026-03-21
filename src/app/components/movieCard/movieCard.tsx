@@ -1,33 +1,34 @@
-
-import { Movie } from "@/Types/types"
+import { Movie } from "@/Types/types";
+import StarRating from "../starRating/starRating";
 export interface Props {
-    movie: Movie
+  movie: Movie;
 }
 
-
-
-
-
-
-
 export default function MovieCard(props: Props) {
-    const movie = props.movie
-    return (
-           <li key={movie.id} className="movie-card"> 
-                <p>
-                {movie.title}
-                </p>
+  const movie = props.movie;
+  return (
+    <li key={movie.id} className="movie-card">
+      <div className="movie-poster">
+        <img
+          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+          alt={movie.title}
+        />
+      </div>
 
-                <p className="description">
-                    {movie.overview}
-                </p>
 
-                <p>
-                    <img src = {`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} />
-                </p>
+      <div className="movie-info">
+        <p className=" movie-title">
+            {movie.title}
+            </p>
+            <StarRating rating={movie.vote_average} />
+        
+         </div>
+   <div className="hiden-content">
+    <p className="description">{movie.overview}</p>
+   </div>
 
-                <p>
-                    {movie.vote_average}
-                </p>
 
-         </li>)}
+      <p>{movie.vote_average}</p>
+    </li>
+  );
+}
