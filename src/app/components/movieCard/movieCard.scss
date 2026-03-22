@@ -1,0 +1,74 @@
+.movie-card {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative; 
+  
+
+  .movie-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    transition: opacity 6s;
+  }
+
+  .movie-info {
+    color: #f1f5f9;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(#00000000, #000000);
+    height: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+    .movie-title {
+      font-size: 12px;
+      color: #f1f5f9;
+      margin-bottom: 6px;
+    }
+
+    .hiden-content {
+      color: #f1f5f9;
+      font-size: 12px;
+      margin-top: 8px;
+      height: 0px;
+      opacity: 0;
+      transition: all 0.3s;
+
+      .btn-default {
+        background-color: #6046ff;
+        padding: 4px 8px;
+        margin-top: 10px;
+        border-radius: 4px;
+        color: #f1f5f9;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+      }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    .movie-poster img {
+      opacity: 0.5;
+    }
+
+    .hiden-content {
+      opacity: 1;
+      height: 100%;
+    }
+
+    .movie-info:has(.descripition).hiden-content {
+      height: 100px;
+    }
+
+    .movie-info:not(:has(.descripition)).hiden-content {
+      height: 50px;
+    }
+  }
+}

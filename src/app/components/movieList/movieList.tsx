@@ -4,18 +4,18 @@ import "./movieList.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Movie } from "@/Types/types";
-
-import { get } from "http";
 import MovieCard from "../movieCard/movieCard";
+
 export default function MovieList() {
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getMovies();
   }, []);
 
-  const getMovies = () => {
-    axios({
+  const getMovies = async () => {
+    await axios({
       method: "GET",
       url: "https://api.themoviedb.org/3/discover/movie",
       params: {
@@ -25,7 +25,21 @@ export default function MovieList() {
     }).then((response) => {
       setMovies(response.data.results);
     });
+
+    setIsLoading(false);
   };
+
+  if (isLoading) {
+    return (
+      <div className="loading">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+    
+
+
+
 
   return (
     <ul className="movie-list">
