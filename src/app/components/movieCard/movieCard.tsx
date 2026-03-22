@@ -1,14 +1,14 @@
 import { Movie } from "@/Types/types";
 import StarRating from "../starRating/starRating";
 import "./movieCard.scss";
+
 export interface Props {
   movie: Movie;
 }
 
-export default function MovieCard(props: Props) {
-  const movie = props.movie;
+export default function MovieCard({ movie }: Props) {
   return (
-    <li key={movie.id} className="movie-card">
+    <li className="movie-card">
       <div className="movie-poster">
         <img
           src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
@@ -17,24 +17,18 @@ export default function MovieCard(props: Props) {
       </div>
 
       <div className="movie-info">
-        <p className=" movie-title">
-          {movie.title}
-          </p>
-
-          {movie.vote_average > 0 && 
-            <StarRating
-         rating={movie.vote_average} />
-          }
-      
-
+        <p className="movie-title">{movie.title}</p>
+        {movie.vote_average > 0 && <StarRating rating={movie.vote_average} />}
       </div>
 
-      <div className="hiden-content">
+      <div className="movie-overlay">
+        <p className="overlay-title">{movie.title}</p>
+
+        {movie.vote_average > 0 && <StarRating rating={movie.vote_average} />}
+
         {movie.overview && (
           <p className="description">
-            {movie.overview.length > 100
-              ? `${movie.overview.substring(0, 100)}...`
-              : movie.overview}
+            {movie.overview}
           </p>
         )}
 
