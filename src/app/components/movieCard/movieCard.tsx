@@ -26,11 +26,7 @@ export default function MovieCard({ movie }: Props) {
 
         {movie.vote_average > 0 && <StarRating rating={movie.vote_average} />}
 
-        {movie.overview && (
-          <p className="description">
-            {movie.overview}
-          </p>
-        )}
+        {movie.overview && <p className="description">{movie.overview}</p>}
 
         <button className="btn-default">Ver mais</button>
       </div>

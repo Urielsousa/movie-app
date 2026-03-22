@@ -20,7 +20,7 @@ export default function starRating(props: Props) {
     emptyStars.push(i);
   }
     return (
-      <div className="movie-rating">
+      <div className="movie-rate">
        
        {fullStars.map(index =>
             <MdStarRate key={index} />
