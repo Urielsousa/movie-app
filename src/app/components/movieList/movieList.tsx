@@ -3,7 +3,7 @@
 import "./movieList.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Movie } from "@/Types/types";
+import { Movie } from "@/Types/movie";
 import MovieCard from "../movieCard/movieCard";
 
 export default function MovieList() {
@@ -24,6 +24,7 @@ export default function MovieList() {
       },
     }).then((response) => {
       setMovies(response.data.results);
+      console.log(response);
     });
 
     setIsLoading(false);
@@ -36,10 +37,6 @@ export default function MovieList() {
       </div>
     );
   }
-    
-
-
-
 
   return (
     <ul className="movie-list">

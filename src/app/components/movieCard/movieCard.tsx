@@ -1,4 +1,4 @@
-import { Movie } from "@/Types/types";
+import { Movie } from "@/Types/movie";
 import StarRating from "../starRating/starRating";
 import "./movieCard.scss";
 
